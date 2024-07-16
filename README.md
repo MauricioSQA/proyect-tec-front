@@ -77,14 +77,41 @@
 ### Confirmación de Recepción de Pedido###
 -Funcionalidad desde el usuario para confirmar la recepción de un pedido
 
-
-
-
-
-
 ## Documentación de la API 📖
 
 ### Endpoints:
+
+###Autenticacion###
+
+
+
+**POST /api/auth/registro**
+-Crea un nuevo usuario
+
+**POST /api/auth/registroe**
+-Crea una nueva empresa
+
+**POST /api/auth/login**
+-Autentica a el usuario o empresa 
+
+###Usuarios###
+
+**GET /api/usuarios:**
+Obtiene una lista de todos los usuarios registrados con soporte para ordenamiento y paginación.
+
+**GET /api/usuarios/{id}:**
+- Obtiene información detallada sobre un usuario específica por su identificador.
+
+**PUT /api/usuarios/{id}:**
+- Actualiza un usuario existente por su identificador.
+  - Método: `PUT`
+  - Endpoint: `/api/usuarios/{id}`
+  - Body: JSON con los datos actualizados de la empresa.
+
+**DELETE /api/usuarios/{id}:**
+- Elimina un usuario por su identificador.
+  - Método: `DELETE`
+  - Endpoint: `/api/usuarios/{id}`
 
 #### Empresas:
 
@@ -94,11 +121,6 @@
 **GET /api/empresas/{id}:**
 - Obtiene información detallada sobre una empresa específica por su identificador.
 
-**POST /api/empresas:**
-- Crea una nueva empresa.
-  - Método: `POST`
-  - Endpoint: `/api/empresas`
-  - Body: JSON con los datos de la empresa a crear.
 
 **PUT /api/empresas/{id}:**
 - Actualiza una empresa existente por su identificador.
@@ -142,39 +164,35 @@
 
 
 
-
-
 ### Ejemplo de Uso:
 
-#### Crear una nueva empresa:
+#### Crear un nuevo usuario:
 ```http
-POST /api/empresas
+POST /api/auth/registro
 Content-Type: application/json
 
 {
-  "nombre": "Nombre de la Empresa",
-  "descripcion": "Descripción de la empresa",
-  "direccion": "Dirección de la empresa"
+  "nombre": "Nombre del Usuario",
+  "username": "Nombre de usuario(email)",
+  "password": "Password"
 }
+
 ```
-### Actualizar una empresa existente:
+### Actualizar un usuario existente:
 ```http
-PUT /api/empresas/{id}
+PUT /api/usuarios/{id}
 Content-Type: application/json
 
 {
   "nombre": "Nuevo Nombre",
-  "descripcion": "Nueva descripción",
-  "direccion": "Nueva dirección"
+  "username": "Nuevo Username",
+  "password": "Nuevo Password"
 }
 ```
 ### Obtener todos los productos de una empresa específica:
 ```http
 GET /api/productos/empresa/{id}
 ```
-
-
-
 
 
 ## Empezando 🚀
@@ -190,11 +208,17 @@ GET /api/productos/empresa/{id}
 
 1. Clona este repositorio:
 
+-Backend:
    ```bash
-   https://github.com/LuisSalas94/desperdicio-cero-isil
+   https://github.com/MauricioSQA/proyect-tec-backend.git
+   ```
+-Fronted:
+   ```bash
+   https://github.com/MauricioSQA/proyect-tec-front.git
    ```
 2. Configura la base de datos MySQL y ajusta las credenciales en la configuración de Spring Boot.
-	- En la Base de datos MySQL crear una base de 
+	- En la Base de datos MySQL crear una base de datos con el nombre food_app
+
  ### Ejecución  Backend:
 - Navega a la carpeta springboot-backend.
 - Construye la aplicación Spring Boot con Maven:
@@ -217,16 +241,20 @@ GET /api/productos/empresa/{id}
  ```
 
 
-
-
 ### Accede a la Aplicación:
 - Abre tu navegador y navega a http://localhost:4200 para disfrutar de Desperdicio Cero en acción.
 - ¡Explora, gestiona y contribuye a Desperdicio Cero para una experiencia gastronómica más sostenible y eficiente! 🌍
 
+###Paypal###
+- Para simular el pago con Paypal debemos elegir la segunda opción, donde dice pagar con tarjeta de crédito, usaremos los datos proporcionados por PayPal
+Card number: 4032033713251911
+Expiry date: 10/26
+CVC code: 039
+
 ## Autores 👤
 
 - [Fernando Salas](https://github.com/LuisSalas94)
-- [Mauricio](https://github.com)
+- [Mauricio](https://github.com/MauricioSQA)
 - [Mirko](https://github.com)
 
 ## Contribuciones 🤝
