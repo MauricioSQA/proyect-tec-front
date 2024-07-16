@@ -1,0 +1,32 @@
+<div class="container mt-5 mb-5 d-flex justify-content-center" data-aos="fade-right" data-aos-duration="1000">
+  <div class="col-md-4" *ngIf="getRol() === 'USUARIO'">
+    <form>
+      <h2 class="mb-4 text-center">
+        Bienvenido {{usuario.nombre}}
+      </h2>
+      <div class="form-group">
+        <label for="nombreEmpresa">Nombre </label>
+        <input readonly type="text" class="form-control" id="nombreEmpresa" placeholder="Ingrese el nombre de la empresa" [(ngModel)]="usuario.nombre" [ngModelOptions]="{ standalone: true }" />
+      </div>
+      <div class="form-group mt-4">
+        <label for="email">Apellido</label>
+        <input  type="text" class="form-control" id="email" placeholder="Ingrese su apellido" [(ngModel)]="usuario.apellido" [ngModelOptions]="{ standalone: true }" />
+      </div>
+      <div class="form-group mt-4">
+        <label for="email">correo electrónico</label>
+        <input readonly type="text" class="form-control" id="email" placeholder="Ingrese el correo electrónico de la empresa" [(ngModel)]="usuario.username" [ngModelOptions]="{ standalone: true }" />
+      </div>
+      <div class="form-group mt-4">
+        <label for="email">Teléfono</label>
+        <input  type="text" class="form-control" id="email" placeholder="Ingrese un número de teléfono" [(ngModel)]="usuario.telefono" [ngModelOptions]="{ standalone: true }" />
+      </div>
+      <div class="form-group mt-4">
+        <label for="direccion">Dirección</label>
+        <input  type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección " [(ngModel)]="usuario.direccion" [ngModelOptions]="{ standalone: true }" />
+      </div>
+      <button type="button" class="btn btn-outline-primary mt-4 w-100" *ngIf="id > 0" (click)="update(id, usuario)" [routerLink]="['/usuario/edit', usuario.id]">Actualizar</button>
+    </form>
+  </div>
+</div>
+
+

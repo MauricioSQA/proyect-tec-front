@@ -1,0 +1,41 @@
+<div
+  *ngIf="sliderFavoritos.length >= 1"
+  class="container"
+  data-aos="fade-up"
+  data-aos-duration="1000"
+>
+  <h2 class="text-center mb-4">Los Favoritos de la Casa</h2>
+  <p class="text-center">
+    Descubre nuestros productos más populares y favoritos entre nuestros
+    clientes. Estos artículos destacan por su calidad, sabor y la satisfacción
+    que generan en quienes los disfrutan.
+  </p>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div *ngFor="let favorito of sliderFavoritos" class="col">
+      <div class="card">
+        <img
+          [src]="getImagenProducto(favorito.tipoProducto)"
+          class="card-img-top"
+          alt="Ensalada Cesar"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-center">{{ favorito.nombre }}</h5>
+          <p class="card-text text-center">
+            {{ favorito.descripcion }}
+          </p>
+          <div class="d-flex justify-content-evenly">
+            <span class="badge bg-light text-dark"
+              >$ {{ favorito.precio }}</span
+            >
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="deleteFavProduct(favorito.id)"
+            >
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

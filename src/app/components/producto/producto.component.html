@@ -1,0 +1,368 @@
+
+<section
+  id="about"
+  class="about section"
+  data-aos="fade-right"
+  data-aos-duration="1000"
+>
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2 class="text-center my-5">Acerca de: {{ empresa.nombre }}<br /></h2>
+  </div>
+
+
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+        <img
+          src="https://images.unsplash.com/photo-1525648199074-cee30ba79a4a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          class="img-fluid mb-4 rounded"
+          alt=""
+        />
+        <div class="book-a-table">
+          <p>
+            Nos enorgullecemos de nuestra atención al detalle y nuestro enfoque
+            centrado en el cliente. Nuestro equipo de profesionales está listo
+            para ayudarle con cualquier consulta que pueda tener. No dude en
+            ponerse en contacto con nosotros.
+          </p>
+
+          <h3>Reserva una mesa:</h3>
+          <p>{{ empresa.telefono }}</p>
+        </div>
+        <div class="book-a-table">
+          <h3>Encuéntranos en:</h3>
+          <p>{{ empresa.direccion }}</p>
+        </div>
+        <div class="book-a-table">
+          <p>
+            En {{ empresa.nombre }}, valoramos la innovación y la calidad, y
+            trabajamos arduamente para ofrecer los mejores productos y servicios
+            del mercado. Ya sea que esté buscando {{ empresa.tipo }} o cualquier
+            otro producto relacionado, puede confiar en nosotros para brindarle
+            soluciones efectivas y personalizadas. Gracias por considerar
+            {{ empresa.nombre }}. Esperamos poder servirle pronto y construir
+            una relación duradera con usted.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
+        <div class="content ps-0 ps-lg-5">
+          <p>
+            Nuestra empresa, {{ empresa.nombre }}, se dedica a ofrecer los
+            mejores productos y servicios en la industria. Ubicados en
+            {{ empresa.direccion }}, estamos comprometidos con la satisfacción
+            de nuestros clientes y la calidad de nuestros productos. Operamos en
+            un horario conveniente para nuestros clientes, de
+            {{ empresa.horario }}. Para cualquier consulta, no dude en
+            contactarnos a través de nuestro correo electrónico
+            {{ empresa.username }} o llámenos al {{ empresa.telefono }}. En
+            {{ empresa.nombre }}, creemos en la innovación y la excelencia.
+            Ofrecemos una variedad de productos que incluyen:
+          </p>
+          <ul class="list-group">
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              <span class="fw-bold text-dark">Café:</span>
+              <span class="ms-2">Delicioso café de alta calidad.</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              <span class="fw-bold text-dark">Sánguches:</span>
+              <span class="ms-2">Sánguches frescos y saludables.</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              <span class="fw-bold text-dark">Ensaladas:</span>
+              <span class="ms-2">Ensaladas nutritivas y variadas.</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              <span class="fw-bold text-dark">Pastas:</span>
+              <span class="ms-2">Pastas caseras con ingredientes frescos.</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              <span class="fw-bold text-dark">Postres:</span>
+              <span class="ms-2">Postres deliciosos y dulces.</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              <span class="fw-bold text-dark">Pizzas:</span>
+              <span class="ms-2"
+                >Pizzas recién horneadas con los mejores ingredientes.</span
+              >
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              <span class="fw-bold text-dark">Sushi:</span>
+              <span class="ms-2"
+                >Sushi preparado con los más altos estándares de calidad.</span
+              >
+            </li>
+          </ul>
+
+          <div class="position-relative mt-4">
+            <img
+              src="https://images.unsplash.com/photo-1494346480775-936a9f0d0877?q=80&w=1116&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="img-fluid rounded"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div
+  class="container mt-5 mb-5 d-flex justify-content-center"
+  data-aos="fade-right"
+  data-aos-duration="1000"
+  *ngIf="getRol()==='EMPRESA'"
+>
+  <div class="col-md-4">
+    <form (ngSubmit)="onCreate()">
+      <h2 class="mb-4 text-center">Ingrese sus Productos</h2>
+      <div class="form-group">
+        <label for="nombreProducto">Nombre del Producto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombreProducto"
+          placeholder="Ingrese el nombre del Producto"
+          [(ngModel)]="nombreProducto"
+          name="nombreProducto"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="descripcionProducto">Descripcion del Producto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="descripcionProducto"
+          placeholder="Ingrese descripcion del Producto"
+          [(ngModel)]="descripcionProducto"
+          name="descripcionProducto"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="precioProducto">Precio del Producto Original</label>
+        <input
+          type="number"
+          class="form-control"
+          id="precioProducto"
+          placeholder="Ingrese precio del Producto"
+          [(ngModel)]="precioProducto"
+          name="precioProducto"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="precioProducto">Precio del Producto Oferta</label>
+        <input
+          type="number"
+          class="form-control"
+          id="precioProductoOferta"
+          placeholder="Ingrese precio del Producto Oferta"
+          [(ngModel)]="precioProductoOferta"
+          name="precioProductoOferta"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="stockProducto">Stock del Producto</label>
+        <input
+          type="number"
+          class="form-control"
+          id="stockProducto"
+          placeholder="Ingrese Stock del Producto"
+          [(ngModel)]="stockProducto"
+          name="stockProducto"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="stockProducto">Tipo de Producto</label>
+        <select
+          [(ngModel)]="selectedTipoProducto"
+          class="form-select"
+          aria-label="Default select example"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <option *ngFor="let tipo of tipoProductos" [value]="tipo.value">
+            {{ tipo.label }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-outline-primary mt-4 w-100">
+        Registrar Producto
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <p>
+    En {{ empresa.nombre }} podrás encontrar una selecta variedad de productos.
+    Nos enorgullecemos de ofrecer a nuestros clientes lo mejor en calidad y
+    sabor. Desde deliciosos cafés de alta calidad, frescos y saludables
+    sánguches, nutritivas y variadas ensaladas, hasta pastas caseras elaboradas
+    con ingredientes frescos. También podrás disfrutar de nuestros deliciosos y
+    dulces postres, pizzas recién horneadas con los mejores ingredientes, y
+    sushi preparado con los más altos estándares de calidad. A continuación, te
+    presentamos la lista completa de nuestros productos:
+  </p>
+</div>
+
+<div class="container my-5">
+  <ul class="list-unstyled d-flex justify-content-start flex-wrap">
+    <li *ngFor="let item of filtrarTipoProductos" class="me-2 mb-2">
+      <button class="btn btn-outline-secondary" (click)="filterProducts(item)">
+        {{ item | titlecase }}
+      </button>
+    </li>
+    <li class="me-2 mb-2">
+      <button class="btn btn-outline-secondary" (click)="mostrarTodos()">
+        Mostrar Todos
+      </button>
+    </li>
+  </ul>
+</div>
+
+<div class="container mb-5">
+  <h2 class="mb-4 text-center">Lista de Productos</h2>
+  <table class="table table-hover align-middle mb-0 bg-white shadow-sm rounded">
+    <thead class="bg-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Precio Original</th>
+        <th>Precio Oferta</th>
+        <th>Stock</th>
+        <th>Tipo de Producto</th>
+        <th colspan="4" class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+              [src]="getImagenProducto(producto.tipoProducto)"
+              alt="Producto"
+              style="width: 45px; height: 45px"
+              class="rounded-circle shadow-sm"
+            />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ producto.nombre }}</p>
+              <p class="text-muted mb-0">{{ producto.codProducto }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ producto.descripcion }}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">
+            $
+            <span class="text-decoration-line-through">{{
+              producto.precioOriginal
+            }}</span>
+          </p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">$ {{ producto.precioOferta }}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">
+            {{ producto.cant_disponible }}
+            {{ producto.cant_disponible == 1 ? "unidad" : "unidades" }}
+          </p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ producto.tipoProducto | titlecase }}</p>
+        </td>
+        <td class="text-center"></td>
+        <td class="text-center">
+          <button
+            class="btn btn-outline-primary btn-sm"
+            (click)="onBuy(producto)"
+            routerLink="/shopping"
+            *ngIf="getRol()==='USUARIO'"
+          >
+            <i class="bi bi-cart"></i> Comprar
+          </button>
+        </td>
+        <td class="text-center"
+        *ngIf="getRol()==='EMPRESA'">
+          <button
+            class="btn btn-outline-success btn-sm"
+            (click)="addToFavorite(producto)"
+            
+          >
+            <i class="bi bi-heart"></i> Favoritos
+          </button>
+        </td>
+        <td class="text-center" *ngIf="getRol()==='EMPRESA'">
+          <button
+            class="btn btn-outline-danger btn-sm"
+            (click)="onDelete(producto.id!)"
+            
+          >
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div *ngIf="pedidos.length >= 1" class="container mb-5">
+  <h2 class="mb-4 text-center">Pedidos Pendientes</h2>
+  <table class="table table-hover align-middle mb-0 bg-white shadow-sm rounded">
+    <thead class="bg-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Codigo Pedido</th>
+        <th>Precio</th>
+        <th colspan="4" class="text-center">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of pedidos; let i = index">
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ pedido.nombre }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ pedido.pedidoId }}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">S/. {{ pedido.precio }}</p>
+        </td>
+        <td class="text-center"></td>
+        <td class="text-center">
+          <button
+            *ngIf="!pedido.isDelivered"
+            class="btn btn-outline-primary btn-sm"
+            (click)="onDelivery(i)"
+          >
+            <i class="bi bi-truck"></i> Confirmar Recepción
+          </button>
+        </td>
+        <td *ngIf="pedido.isDelivered" class="text-center">
+          <button class="btn btn-outline-primary btn-sm">
+            <i class="bi bi-check-circle-fill"></i> Pedido Recibido
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

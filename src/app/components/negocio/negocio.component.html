@@ -1,0 +1,162 @@
+<app-negocio-content />
+
+<!-- Form -->
+<div
+  class="container mt-5 mb-5 d-flex justify-content-center"
+  data-aos="fade-right"
+  data-aos-duration="1000"
+  *ngIf="getRol()==='EMPRESA'"
+>
+  <div class="col-md-4">
+    <form (ngSubmit)="onCreate()">
+      <h2 class="mb-4 text-center">
+         Actualice su Empresa
+      </h2>
+      <div class="form-group">
+        <label for="nombreEmpresa">Nombre de la Empresa</label>
+        <input
+          readonly
+          type="text"
+          class="form-control"
+          id="nombreEmpresa"
+          placeholder="Ingrese el nombre de la empresa"
+          [(ngModel)]="empresa.nombre"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="direccion">Dirección</label>
+        <input
+          type="text"
+          class="form-control"
+          id="direccion"
+          placeholder="Ingrese la dirección de la empresa"
+          [(ngModel)]="empresa.direccion"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="horario">Horario de Atención</label>
+        <input
+          type="text"
+          class="form-control"
+          id="horario"
+          placeholder="Ingrese el horario de atención"
+          [(ngModel)]="empresa.horario"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="email">Correo Electrónico</label>
+        <input
+          readonly
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Ingrese el correo electrónico de la empresa"
+          [(ngModel)]="empresa.username"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="telefono">Teléfono</label>
+        <input
+          type="text"
+          class="form-control"
+          id="telefono"
+          placeholder="Ingrese el teléfono de contacto"
+          [(ngModel)]="empresa.telefono"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="tipoEmpresa">Tipo de Empresa</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tipoEmpresa"
+          placeholder="Ingrese el tipo de empresa"
+          [(ngModel)]="empresa.tipo"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="logo">Logo de la Empresa</label>
+        <input
+          type="text"
+          class="form-control"
+          id="logo"
+          placeholder="Ingrese la URL del logo"
+          [(ngModel)]="empresa.logo"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <button
+        type="button"
+        class="btn btn-outline-primary mt-4 w-100"
+        *ngIf="id > 0"
+        (click)="update(id, empresa)"
+      >
+        Actualizar
+      </button>
+      <button
+      type="button"
+      class="btn btn-outline-primary mt-4 w-100"
+      [routerLink]="['/empresa/detalles', empresa.id]"
+    >
+      Manejar Productos
+    </button>
+    </form>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <!-- Table -->
+  <table class="table table-hover align-middle mb-0 bg-white" *ngIf="getRol()==='USUARIO'">
+    <thead class="bg-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Horario</th>
+        <th>Tipo</th>
+        <th >Productos</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let empresa of empresas">
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+              src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1178&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Image1"
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+            />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ empresa.nombre }}</p>
+              <p class="text-muted mb-0">{{ empresa.username }}</p>
+              <p class="text-muted mb-0">{{ empresa.telefono }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{ empresa.direccion }}</p>
+        </td>
+        <td>
+          <p class="badge bg-warning text-dark mb-1">{{ empresa.horario }}</p>
+        </td>
+        <td>
+          <p class="badge bg-primary text-s mb-1">{{ empresa.tipo }}</p>
+        </td>
+        <td>
+          <button
+            class="btn btn-outline-primary btn-sm"
+            [routerLink]="['/empresa/detalles', empresa.id]"
+          >
+            Mostrar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
