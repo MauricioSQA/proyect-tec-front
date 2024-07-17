@@ -22,7 +22,7 @@ export class AuthService {
       ?.post<any>(`${this.baseUrl}/login`, { username, password })
       ?.pipe(
         tap((response) => {
-          console.log('Respuesta del servidor : ', response);
+          //console.log('Respuesta del servidor : ', response);
         }),
         map((response) => {
           if (response && response.token) {
@@ -40,7 +40,7 @@ export class AuthService {
           }
         }),
         catchError((error) => {
-          console.log('Error en la solicitud', error);
+          //console.log('Error en la solicitud', error);
           return throwError(() => error);
         })
       );
